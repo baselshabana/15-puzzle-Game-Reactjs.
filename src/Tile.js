@@ -5,7 +5,6 @@ import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./helpers"
 
 function Tile(props) {
   const { tile, index, width, height, handleTileClick, imgUrl } = props;
-  console.log("img in tile", imgUrl)
   const { row, col } = getPosition(index);
   const visualPos = getVisualPosition(row, col, width, height);
   const tileStyle = {
