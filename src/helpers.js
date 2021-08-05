@@ -1,6 +1,6 @@
 export const TILE_COUNT = 16;
 export const GRID_SIZE = 4;
-export const BOARD_SIZE = 320;
+export const BOARD_SIZE = 420;
 
 export function getPosition(index) {
     return {
@@ -15,7 +15,7 @@ export function getPosition(index) {
       y: row * height,
     };
   }
-  
+
   export function canSwap(srcIndex, destIndex) {
     const { row: srcRow, col: srcCol } = getPosition(srcIndex);
     const { row: destRow, col: destCol } = getPosition(destIndex);
@@ -28,3 +28,12 @@ export function getPosition(index) {
     return tilesResult;
   }
 
+  export function shuffle(tiles) {
+    const shuffledTiles = [
+      ...tiles
+        .filter((t) => t !== tiles.length - 1)
+        .sort(() => Math.random() - 0.5),
+      tiles.length - 1,
+    ];
+    return shuffledTiles;
+  }

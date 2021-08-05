@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Tile from "./Tile";
 import { TILE_COUNT, GRID_SIZE, BOARD_SIZE } from "./helpers"
-import {canSwap, swap} from "./helpers"
+import {canSwap, swap, shuffle} from "./helpers"
 
 function Board({ imgUrl }) {
   const [tiles, setTiles] = useState([...Array(TILE_COUNT).keys()]);
@@ -15,6 +15,11 @@ function Board({ imgUrl }) {
 
   const handleTileClick = (index) => {
     swapTiles(index)
+  }
+
+  const shuffleTiles = () => {
+    const shuffledTiles = shuffle(tiles)
+    setTiles(shuffledTiles);
   }
 
   const pieceWidth = Math.round(BOARD_SIZE / GRID_SIZE);
@@ -39,6 +44,7 @@ function Board({ imgUrl }) {
           />
         ))}
       </ul>
+      <button onClick={() => shuffleTiles() }>New game</button>
     </>
   );
 }
