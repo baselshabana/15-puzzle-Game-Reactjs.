@@ -1,6 +1,8 @@
 export const TILE_COUNT = 16;
 export const GRID_SIZE = 4;
 export const BOARD_SIZE = 420;
+export const SHUFFLE_NUM = 42;
+
 
 export function getPosition(index) {
     return {
@@ -28,12 +30,12 @@ export function getPosition(index) {
     return tilesResult;
   }
 
-  export function shuffle(tiles) {
-    const shuffledTiles = [
-      ...tiles
-        .filter((t) => t !== tiles.length - 1)
-        .sort(() => Math.random() - 0.5),
-      tiles.length - 1,
-    ];
-    return shuffledTiles;
-  }
+  export function Won(tiles){
+  
+    console.log(tiles);
+    for(var i =0; i< TILE_COUNT ; i++){
+      if(tiles[i] !== i )
+        return false;
+    }
+    return true;
+    }
